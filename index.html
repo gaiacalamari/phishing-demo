@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Verifica sicurezza account</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background:#f1f3f6;
+      font-family:Arial,sans-serif;
+    }
+    .box {
+      width:360px;
+      margin:120px auto;
+      background:#fff;
+      padding:30px;
+      border-radius:6px;
+      box-shadow:0 6px 18px rgba(0,0,0,.15);
+    }
+    input, button {
+      width:100%;
+      padding:10px;
+      margin-top:12px;
+    }
+    button {
+      background:#0b5ed7;
+      color:#fff;
+      border:none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Conferma identità</h2>
+  <p>Per motivi di sicurezza è richiesta la verifica dell’account.</p>
+
+  <form onsubmit="return fakeLogin();">
+    <input type="email" placeholder="Email" required>
+    <input type="password" placeholder="Password" required>
+    <button type="submit">Continua</button>
+  </form>
+</div>
+
+<script>
+function fakeLogin() {
+  setTimeout(function () {
+    window.location.href = "verifica-completata.html";
+  }, 700);
+  return false;
+}
+</script>
+
+</body>
+</html>
