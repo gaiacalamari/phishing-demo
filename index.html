@@ -27,26 +27,68 @@
       color:#fff;
       border:none;
     }
+    .hidden { display:none; }
+
+    /* Vista attaccante */
+    .attacker {
+      width:600px;
+      margin:80px auto;
+      background:#111;
+      color:#0f0;
+      padding:20px;
+      font-family:monospace;
+      border-radius:6px;
+    }
   </style>
 </head>
 <body>
 
-<div class="box">
+<!-- VISTA UTENTE -->
+<div class="box" id="loginBox">
   <h2>Conferma identità</h2>
   <p>Per motivi di sicurezza è richiesta la verifica dell’account.</p>
 
   <form onsubmit="return fakeLogin();">
-    <input type="email" placeholder="Email" required>
-    <input type="password" placeholder="Password" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
     <button type="submit">Continua</button>
   </form>
 </div>
 
+<!-- VISTA ATTACCANTE (nascosta) -->
+<div class="attacker hidden" id="attackerView">
+  <h3>[ Attacker View – Simulazione ]</h3>
+  <pre id="dump"></pre>
+</div>
+
 <script>
 function fakeLogin() {
-  setTimeout(function () {
-    window.location.href = "verifica-completata.html";
-  }, 700);
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const timestamp = new Date().toISOString();
+
+  /* ===== Console (invisibile all'utente) ===== */
+  console.log("[SIMULAZIONE PHISHING]");
+  console.log("Email:", email);
+  console.log("Password:", password);
+  console.log("Timestamp:", timestamp);
+
+  /* ===== Vista attaccante ===== */
+  if (window.location.hash === "#attacker") {
+    document.getElementById("loginBox").classList.add("hidden");
+    document.getElementById("attackerView").classList.remove("hidden");
+
+    document.getElementById("dump").textContent =
+`Email: ${email}
+Password: ${password}
+Timestamp: ${timestamp}`;
+  } else {
+    /* ===== Comportamento normale ===== */
+    setTimeout(function () {
+      window.location.href = "verifica-completata.html";
+    }, 700);
+  }
+
   return false;
 }
 </script>
