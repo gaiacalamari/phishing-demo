@@ -3,29 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <title>Verifica completata</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      background:#f4f6f8;
-      font-family:Arial,sans-serif;
-      text-align:center;
-      padding-top:120px;
+      margin: 0;
+      background: #f3f2f1;
+      font-family: "Segoe UI", SegoeUI, Arial, sans-serif;
+      color: #323130;
     }
-    .msg {
-      background:#fff;
-      display:inline-block;
-      padding:40px;
-      border-radius:6px;
-      box-shadow:0 4px 12px rgba(0,0,0,.1);
+
+    .topbar {
+      background: #ffffff;
+      border-bottom: 1px solid #edebe9;
+      padding: 16px 32px;
+      text-align: left;
+      font-size: 18px;
+      font-weight: 600;
+      color: #0078d4;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 60px);
+    }
+
+    .card {
+      background: #ffffff;
+      width: 420px;
+      padding: 40px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      border-radius: 4px;
+      text-align: left;
+    }
+
+    h2 {
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .success {
+      color: #107c10;
+      font-weight: 600;
+      margin-top: 20px;
+    }
+
+    .disclaimer {
+      margin-top: 30px;
+      font-size: 12px;
+      color: #605e5c;
+      border-top: 1px solid #edebe9;
+      padding-top: 12px;
     }
   </style>
 </head>
 <body>
 
-<div class="msg">
-  <h2>Verifica completata</h2>
-  <p>Grazie. Il tuo account è stato correttamente verificato.</p>
-  <p>Puoi continuare a utilizzare il servizio.</p>
-</div>
+  <div class="topbar">
+    Account Security
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h2>Verifica completata</h2>
+      <p>
+        Grazie. Il tuo account è stato verificato correttamente.
+      </p>
+      <p>
+        Ora puoi continuare a utilizzare il servizio in modo sicuro.
+      </p>
+
+      <p class="success">
+        ✔ Stato: Verifica riuscita
+      </p>
+
+      <div class="disclaimer">
+        Simulazione didattica per analisi forense informatica.<br>
+        Pagina non affiliata né riconducibile a Microsoft o servizi reali.
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
