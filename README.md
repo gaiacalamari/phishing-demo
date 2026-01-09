@@ -28,7 +28,7 @@ phishing-demo/
 ├── server.js
 └── package.json
 
-🧠 Flusso dimostrativo
+Flusso dimostrativo
 [ HTML / JS ]
       |
       |  POST /collect (mock)
@@ -44,7 +44,7 @@ npm init -y
 npm install express nodemailer
 nodemailer viene usato solo in modalità simulata (nessun invio reale).
 
-▶️ Avvio
+Avvio
 node server.js
 
 
