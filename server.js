@@ -30,7 +30,7 @@ Timestamp: ${d.timestamp}
 
   await transporter.sendMail({
     from: '"Security Demo" <demo@localhost>',
-    to: "ciao@gmail.com",
+    to: "forensicgaia@gmail.com",
     subject: "[SIMULAZIONE] Credenziali mascherate",
     text
   });
