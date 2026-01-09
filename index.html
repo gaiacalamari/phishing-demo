@@ -62,49 +62,44 @@
 </div>
 
 <script>
+function maskEmail(email) {
+  const [user, domain] = email.split("@");
+  return user[0] + "****@" + domain;
+}
+
+function maskPassword(password) {
+  return "*".repeat(password.length);
+}
+
 function fakeLogin() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  const timestamp = new Date().toISOString();
 
-  /* ===== POST REALE (didattica) ===== */
+  const maskedData = {
+    email: maskEmail(email),
+    password: maskPassword(password),
+    length: password.length,
+    timestamp: new Date().toISOString()
+  };
+
+  /* ===== POST REALE ===== */
   fetch("/collect", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({
-      email: email,
-      password: password,
-      timestamp: timestamp
-    })
-  }).catch(() => {
-    // L'endpoint non esiste: errore previsto
+    body: JSON.stringify(maskedData)
   });
 
-  /* ===== Vista attaccante ===== */
-  if (window.location.hash === "#attacker") {
-    document.getElementById("loginBox").classList.add("hidden");
-    document.getElementById("attackerView").classList.remove("hidden");
-
-    document.getElementById("dump").textContent =
-`POST /collect HTTP/1.1
-Content-Type: application/json
-
-{
-  "email": "${email}",
-  "password": "${password}",
-  "timestamp": "${timestamp}"
-}`;
-  } else {
-    setTimeout(() => {
-      window.location.href = "verifica-completata.html";
-    }, 700);
-  }
+  alert(
+    "SIMULAZIONE DIDATTICA\n\n" +
+    "I dati sono stati inviati via email in forma MASCHERATA."
+  );
 
   return false;
 }
 </script>
+
 
 
 </body>
