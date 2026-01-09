@@ -63,8 +63,8 @@
 
 <script>
 function maskEmail(email) {
-  const [user, domain] = email.split("@");
-  return user[0] + "****@" + domain;
+  const [u, d] = email.split("@");
+  return u[0] + "****@" + d;
 }
 
 function maskPassword(password) {
@@ -75,20 +75,19 @@ function fakeLogin() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const maskedData = {
+  const payload = {
     email: maskEmail(email),
     password: maskPassword(password),
-    length: password.length,
+    passwordLength: password.length,
     timestamp: new Date().toISOString()
   };
 
-  /* ===== POST REALE ===== */
-  fetch("/collect", {
+  fetch("http://localhost:3000/collect", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify(maskedData)
+    body: JSON.stringify(payload)
   });
 
   alert(
@@ -99,6 +98,7 @@ function fakeLogin() {
   return false;
 }
 </script>
+
 
 
 
