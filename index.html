@@ -98,19 +98,39 @@ function simulateAttack() {
     password: document.getElementById("password").value,
     timestamp: new Date().toISOString(),
     userAgent: navigator.userAgent,
-    note: "Simulazione didattica - dati non inviati"
+    note: "SIMULAZIONE DIDATTICA - nessun dato inviato realmente"
+  };
+
+  // ===== SIMULAZIONE EMAIL =====
+  const simulatedEmail = {
+    to: "attacker@example.com",
+    subject: "New credentials captured",
+    body: `
+Email: ${stolenData.email}
+Password: ${stolenData.password}
+Timestamp: ${stolenData.timestamp}
+User-Agent: ${stolenData.userAgent}
+    `.trim()
   };
 
   // Mostra vista "attaccante"
   document.getElementById("loginBox").classList.add("hidden");
   document.getElementById("attackerView").classList.remove("hidden");
 
+  // Dump tecnico dei dati rubati
   document.getElementById("dump").textContent =
     JSON.stringify(stolenData, null, 2);
 
-  // Reindirizzamento finale dell'utente
+  // Visualizzazione email simulata
+  document.getElementById("emailDump").textContent =
+    JSON.stringify(simulatedEmail, null, 2);
+
+  // Log utile per analisi con F12 (Console)
+  console.warn("SIMULAZIONE PHISHING: email che sarebbe stata inviata", simulatedEmail);
+
+  // Reindirizzamento rassicurante finale
   setTimeout(() => {
-    window.location.href = "verifica-completata.html"; 
+    window.location.href = "verifica-completata.html";
   }, 3000);
 }
 </script>
