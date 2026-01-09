@@ -1,2 +1,8 @@
 # phishing-demo
-phishing test
+
+phishing-demo/
+├── index.html
+├── verifica-completata.html
+└── assets/
+    └── style.css   (opzionale)
+
