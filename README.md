@@ -12,14 +12,9 @@ L’obiettivo è aiutare studenti, sviluppatori e team di sicurezza a riconoscer
 
 La demo simula:
 
-una pagina di login falsa
-
-l’invio di dati a un server mock
-
-una pagina di “verifica completata”
-
-❌ Nessun dato viene realmente salvato
-❌ Nessuna email reale viene inviata
+- una pagina di login falsa
+- l’invio di dati a un server mock
+- una pagina di “verifica completata”
 
 🗂️ Struttura del progetto
 phishing-demo/
