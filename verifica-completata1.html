@@ -2,102 +2,126 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Verifica completata</title>
+  <title>PayPal – Conto protetto</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
-      background: #f4f4f6;
-      font-family: Arial, sans-serif;
-      color: #323130;
-    }
-
-    .topbar {
-      background: #0070ba; /* Colore blu PayPal */
-      color: #ffffff;
-      padding: 16px 32px;
-      text-align: left;
-      font-size: 18px;
-      font-weight: 600;
+      background-color: #f5f7fa;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #2c2e2f;
     }
 
     .container {
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: calc(100vh - 60px);
+      flex-direction: column;
     }
 
     .card {
       background: #ffffff;
-      width: 420px;
-      padding: 40px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-      border-radius: 8px;
-      text-align: left;
+      width: 360px;
+      padding: 32px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+
+    .logo {
+      margin-bottom: 20px;
+    }
+
+    .check {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: #2dbf64;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .check svg {
+      width: 30px;
+      height: 30px;
+      fill: #fff;
     }
 
     h2 {
+      font-size: 20px;
       font-weight: 600;
-      margin-bottom: 16px;
-      font-size: 24px;
+      margin-bottom: 12px;
     }
 
     p {
       font-size: 14px;
       line-height: 1.5;
-      margin-bottom: 12px;
-      color: #444;
+      color: #6c7378;
+      margin-bottom: 22px;
     }
 
-    .success {
-      color: #107c10;
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #0070ba;
+      color: #fff;
+      text-decoration: none;
       font-weight: 600;
-      margin-top: 20px;
+      border-radius: 25px;
+      font-size: 14px;
     }
 
-    .disclaimer {
-      margin-top: 30px;
-      font-size: 12px;
-      color: #888;
-      border-top: 1px solid #edebe9;
-      padding-top: 12px;
-      text-align: center;
+    .btn:hover {
+      background-color: #005ea6;
     }
 
     footer {
+      margin-top: 25px;
+      font-size: 11px;
+      color: #9da3a6;
       text-align: center;
-      font-size: 12px;
-      color: #888;
-      margin-top: 20px;
     }
   </style>
 </head>
+
 <body>
 
-  <div class="topbar">
-    <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal" width="120">
-  </div>
-
   <div class="container">
+
     <div class="card">
-      <h2>Verifica completata</h2>
+
+      <div class="logo">
+        <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png"
+             alt="PayPal" width="90">
+      </div>
+
+      <div class="check">
+        <svg viewBox="0 0 24 24">
+          <path d="M9 16.2l-3.5-3.5-1.4 1.4L9 19 20.3 7.7l-1.4-1.4z"/>
+        </svg>
+      </div>
+
+      <h2>Il tuo conto è stato messo in sicurezza</h2>
+
       <p>
-        Grazie. Il tuo account è stato verificato correttamente.
-      </p>
-      <p>
-        Ora puoi continuare a utilizzare il servizio in modo sicuro.
+        Abbiamo verificato con successo le informazioni del tuo conto.
+        Ora puoi continuare a utilizzare PayPal in modo sicuro.
       </p>
 
-      <p class="success">
-        ✔ Stato: Verifica riuscita
-      </p>
+      <a href="#" class="btn">Vai alla sezione del conto</a>
+
     </div>
-  </div>
 
-  <footer>
-    <p>© 2026 PayPal Inc. Tutti i diritti riservati.</p>
-  </footer>
+    <footer>
+      © 2026 PayPal Inc. Tutti i diritti riservati.
+    </footer>
+
+  </div>
 
 </body>
 </html>
