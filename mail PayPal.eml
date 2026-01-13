@@ -1,0 +1,77 @@
+From: PayPal Security <security@paypal-alerts.example>
+To: forensicgaia@gmail.com
+Subject: PayPal: attività di accesso insolita rilevata
+Date: Tue, 9 Jan 2026 14:22:08 +0100
+Message-ID: <20260109142208.55102@mail.paypal-alerts.example>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="=_PayPalBoundary_001"
+
+--=_PayPalBoundary_001
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+
+PayPal ha rilevato un accesso insolito al tuo account.
+
+Per proteggere il tuo account, è richiesta una verifica dell’identità.  
+Visita il link seguente per completare la verifica:  
+https://shorturl.at/TdMcr
+
+PayPal Account Security Team
+
+--=_PayPalBoundary_001
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang=3D"it">
+<head>
+<meta charset=3D"UTF-8">
+<title>PayPal account</title>
+</head>
+<body style=3D"margin:0;padding:0;background-color:#f4f4f4;">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0">
+<tr>
+<td align=3D"center">
+<table width=3D"600" cellpadding=3D"0" cellspacing=3D"0" style=3D"background-color:#ffffff;font-family:Arial,sans-serif;">
+<tr>
+<td style=3D"padding:24px;">
+<img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal" width="120">
+</td>
+</tr>
+
+<tr>
+<td style=3D"padding:24px;font-size:16px;color:#333;">
+<p>Gentile utente,</p>
+
+<p>Abbiamo rilevato un accesso insolito al tuo account PayPal da un nuovo dispositivo o una posizione sconosciuta.</p>
+
+<p>Per proteggere il tuo account, alcune funzioni sono state temporaneamente limitate. Ti chiediamo di verificare la tua identità per ripristinare l'accesso completo.</p>
+
+<p style=3D"margin:24px 0;">
+<a href=3D"https://shorturl.at/TdMcr"
+   style=3D"background-color:#0070ba;color:#ffffff;
+   padding:12px 20px;text-decoration:none;border-radius:4px;
+   display:inline-block;">
+Verifica attività di accesso
+</a>
+</p>
+
+<p>Se non completi la verifica entro 12 ore, l'accesso ai tuoi fondi potrebbe essere sospeso.</p>
+
+<p>Grazie per la collaborazione,<br>
+<b>PayPal Account Security Team</b></p>
+
+<p style=3D"font-size:11px;color:#666;margin-top:32px;">
+© PayPal Inc.
+</p>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+
+--=_PayPalBoundary_001--
