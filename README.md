@@ -1,11 +1,10 @@
-🎣 phishing-demo (Educational)
+# 🎣 phishing-demo (Educational)
 
-⚠️ Disclaimer
-
-Questo progetto è solo a scopo educativo e di sensibilizzazione sulla sicurezza informatica.
+⚠️ Disclaimer 
+Questo progetto per ragazzi è solo a scopo educativo e di sensibilizzazione sulla sicurezza informatica.
 Non deve essere usato per attacchi reali di phishing, raccolta di credenziali o attività illegali.
 
-📌 Descrizione
+## 📌 Descrizione
 
 phishing-demo è una demo di test che mostra come una pagina di phishing può presentarsi visivamente per ingannare un utente.
 L’obiettivo è aiutare studenti, sviluppatori e team di sicurezza a riconoscere e prevenire attacchi di phishing.
@@ -16,7 +15,7 @@ La demo simula:
 - l’invio di dati a un server mock
 - una pagina di “verifica completata”
 
-🗂️ Struttura del progetto
+## 🗂️ Struttura del progetto
 ```bash
 phishing-demo/
 ├── index.html
@@ -25,7 +24,7 @@ phishing-demo/
 └── package.json
 ```
 
-Flusso dimostrativo
+## Flusso dimostrativo
 ```bash
 [ HTML / JS ]
       |
@@ -38,7 +37,7 @@ Flusso dimostrativo
 [ Inbox simulata ]
 ```
 
-⚙️ Installazione
+## ⚙️ Installazione
 ```bash
 npm init -y
 npm install express nodemailer
