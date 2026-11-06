@@ -26,6 +26,7 @@ phishing-demo/
 ```
 
 Flusso dimostrativo
+```bash
 [ HTML / JS ]
       |
       |  POST /collect (mock)
@@ -35,14 +36,19 @@ Flusso dimostrativo
       |  Simulazione SMTP (console.log)
       v
 [ Inbox simulata ]
+```
 
 ⚙️ Installazione
+```bash
 npm init -y
 npm install express nodemailer
 nodemailer viene usato solo in modalità simulata (nessun invio reale).
+```
 
 Avvio
+```bash
 node server.js
+```
 
 
 Apri nel browser:
