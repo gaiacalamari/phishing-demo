@@ -17,11 +17,13 @@ La demo simula:
 - una pagina di “verifica completata”
 
 🗂️ Struttura del progetto
+'''
 phishing-demo/
 ├── index.html
 ├── verifica-completata.html
 ├── server.js
 └── package.json
+'''
 
 Flusso dimostrativo
 [ HTML / JS ]
